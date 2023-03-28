@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from django.views.generic import View
+from .utils import render_to_pdf
 
 # Create your views here.
 from urllib import response
@@ -108,6 +111,18 @@ class WriteBook(APIView):
         #print(responseChat)
         #reply_content = reply_content.split('\n')
         print(history)
-        return Response(history, status=status.HTTP_200_OK)
         
+        # return Response(history, status=status.HTTP_200_OK)
+
+
+        pdf = render_to_pdf('report.html', history)
+        if pdf :
+            response=HttpResponse(pdf,content_type='application/pdf')
+            filename = "History_for_%s.pdf" %(history['titre'])
+            content = "inline; filename= %s" %(filename)
+            response['Content-Disposition'] = content
+
+            return response
+        
+        return HttpResponse("Page Not Found")
 
