@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{titre}}</title>
+    <style>
+        body {
+            color: blue;
+            font-family: verdana;
+            font-size: 300%;
+            text-align: center;
+          }
+    </style>
+</head>
+<body>
+    <h1>{{titre}}</h1>
+    {% for chapitre in chapitres %}
+        <h3>{{chapitre.titre}}</h3>
+        <img src="{{chapitre.image}}" alt="{{chapitre.titre}}">
+        {% for p in chapitre.contenu.paragraphes %}
+            <p>{{p}}</p>
+        {% endfor %}
+
+    {% endfor %}
+</body>
+</html>

@@ -8,6 +8,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 
+from .utils import render_to_pdf
+from django.http import HttpResponse
 import openai
 import wget
 import replicate
@@ -130,3 +132,10 @@ class WriteBook(APIView):
         return Response(history, status=status.HTTP_200_OK)
         
 
+def index(request) :
+    return render(request, 'index.html')
+
+class GeneratePDF(APIView) :
+    def get(self, request, *args, **kwargs) :
+        pdf = render_to_pdf('sample.html')
+        return HttpResponse(pdf, content_type='application/pdf')
