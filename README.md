@@ -1,5 +1,6 @@
 # automation-of-book-generation
 example of history
+\n
 {
     "titre": "Le rêveur",
     "chapitres": [
