@@ -56,6 +56,7 @@ class DownloadPDF(APIView) :
         template = get_template('app/wonderbly.html')
         
         html = template.render(data)
+        html = f'''{html}'''
         
         file_name = 'invoice.pdf'
         pdf_path = "wonderbly.pdf"
@@ -72,16 +73,15 @@ class DownloadPDF(APIView) :
             
         # }
         options = {
-    'page-size': 'A4',
-    'disable-smart-shrinking': '',
-    "enable-local-file-access": "",
-    'margin-top': '0in',
-    'margin-right': '0in',
-    'margin-bottom': '0in',
-    'margin-left': '0in',
-    'encoding': "UTF-8",
-    
-}
+            'page-size': 'A4',
+            'disable-smart-shrinking': '',
+            "enable-local-file-access": "",
+            'margin-top': '0in',
+            'margin-right': '0in',
+            'margin-bottom': '0in',
+            'margin-left': '0in',
+            'encoding': "UTF-8"   
+        }
         print(html)
         pdfkit.from_string(html, pdf_path, options=options)
         return FileResponse(open(pdf_path, 'rb'), filename=file_name, content_type='application/pdf')
