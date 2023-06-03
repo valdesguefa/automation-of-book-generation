@@ -27,8 +27,8 @@ from rest_framework import generics
 
 
 BASE1 = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-API_KEY = "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"
-token = "8fd769d9-6893-47d6-9118-5e1ec71e21c3"
+API_KEY = ""
+token = ""
 URL = "https://api.thenextleg.io/v2/"
 nameButton = 'U3'
 webHookUrl = "https://feb3-185-107-56-156.eu.ngrok.io/image/"
